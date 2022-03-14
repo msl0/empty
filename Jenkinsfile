@@ -8,12 +8,12 @@ pipeline{
             input {
               message 'choose environment'
               parameters {
-                choice(choices: ['dev', 'prod', 'staging'], name: 'env')
+                choice(choices: ['dev', 'prod', 'staging'], name: 'envi')
               }
             }
             steps{
                 echo "========executing B========"
-                echo "Environment: ${env}"
+                echo "Environment: ${envi}"
             }
             post{
                 always{
