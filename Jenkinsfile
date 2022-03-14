@@ -5,6 +5,12 @@ pipeline{
     }
     stages{
         stage("Script"){
+            input {
+              message 'choose environment'
+              parameters {
+                choice choices: ['dev', 'prod', 'staging'], name: 'env'
+              }
+            }
             steps{
                 echo "========executing B========"
             }
