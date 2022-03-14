@@ -13,6 +13,7 @@ pipeline{
             }
             steps{
                 echo "========executing B========"
+                echo "Environment: ${env}"
             }
             post{
                 always{
