@@ -1,32 +1,44 @@
-pipeline{
-    agent any
-    stages{
-        stage("Script"){
-            steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
-        }
+pipeline {
+  agent {
+    node {
+      label 'node01'
     }
-    post{
-        always{
-            echo "========always========"
+
+  }
+  stages {
+    stage('Script') {
+      post {
+        always {
+          echo '========always========'
         }
-        success{
-            echo "========pipeline executed successfully ========"
+
+        success {
+          echo '========A executed successfully========'
         }
-        failure{
-            echo "========pipeline execution failed========"
+
+        failure {
+          echo '========A execution failed========'
         }
+
+      }
+      steps {
+        echo '========executing A========'
+      }
     }
+
+  }
+  post {
+    always {
+      echo '========always========'
+    }
+
+    success {
+      echo '========pipeline executed successfully ========'
+    }
+
+    failure {
+      echo '========pipeline execution failed========'
+    }
+
+  }
 }
